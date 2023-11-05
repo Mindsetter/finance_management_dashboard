@@ -1,6 +1,8 @@
 import 'package:finance_management_dashboard/constants/dash_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'controllers.dart/menu_controller.dart';
 import 'screens/main_screen.dart';
 
 void main() {
@@ -12,17 +14,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Finance Management Dashboard',
-      theme: ThemeData.light().copyWith(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: DashColors.primaryColor,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AppMenuController(),
         ),
-        scaffoldBackgroundColor: DashColors.bgColor,
-        useMaterial3: true,
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Finance Management Dashboard',
+        theme: ThemeData.light().copyWith(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: DashColors.primaryColor,
+          ),
+          scaffoldBackgroundColor: DashColors.bgColor,
+          useMaterial3: true,
+        ),
+        home: const MainScreen(),
       ),
-      home: const MainScreen(),
     );
   }
 }

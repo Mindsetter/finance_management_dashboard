@@ -44,11 +44,11 @@ class OverviewCard extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
-                  width: 6,
+                  width: 5,
                 ),
                 // if (!Responsive.isMobile(context))
                 Chip(
-                  labelPadding: const EdgeInsets.all(0),
+                  labelPadding: const EdgeInsets.only(right: 3),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),

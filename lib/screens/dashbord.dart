@@ -69,10 +69,12 @@ class DashBoard extends StatelessWidget {
               ],
             ),
             if (Responsive.isMobile(context))
+              const SizedBox(
+                height: 20,
+              ),
+            if (Responsive.isMobile(context))
               TotalSavings(decoration: decoration),
-            const SingleChildScrollView(
-              child: TransTable(),
-            ),
+            const TransTable(),
           ],
         ),
       ),
@@ -91,7 +93,10 @@ class TotalSavings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20),
+      padding: EdgeInsets.only(
+        right: 20,
+        left: Responsive.isMobile(context) ? 20 : 0,
+      ),
       child: Container(
         decoration: decoration,
         height: 400,

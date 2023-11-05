@@ -1,3 +1,4 @@
+import 'package:finance_management_dashboard/utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../model/transaction_data.dart';
@@ -29,41 +30,40 @@ class TransTable extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             SingleChildScrollView(
-              padding: const EdgeInsets.all(0),
               scrollDirection: Axis.horizontal,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  columns: [
-                    DataColumn(
-                      label: Row(
-                        children: [
-                          Checkbox(
-                            value: false,
-                            onChanged: (value) {},
-                          ),
-                          const Text('To/From'),
-                        ],
-                      ),
+              child: DataTable(
+                columnSpacing: Responsive.isMobile(context) ? 30 : 100,
+                columns: [
+                  DataColumn(
+                    label: Row(
+                      children: [
+                        Checkbox(
+                          value: false,
+                          onChanged: (value) {},
+                        ),
+                        const Text('To/From'),
+                      ],
                     ),
-                    const DataColumn(
-                      label: Text('Date'),
-                    ),
-                    const DataColumn(
-                      label: Text('Description'),
-                    ),
-                    const DataColumn(
-                      label: Text('Amount'),
-                    ),
-                    const DataColumn(
-                      label: Text('Status'),
-                    ),
-                    const DataColumn(
-                      label: Text('Action'),
-                    ),
-                  ],
-                  rows: List.generate(transactionDetails.length,
-                      (index) => transData(transactionDetails[index])),
+                  ),
+                  const DataColumn(
+                    label: Text('Date'),
+                  ),
+                  const DataColumn(
+                    label: Text('Description'),
+                  ),
+                  const DataColumn(
+                    label: Text('Amount'),
+                  ),
+                  const DataColumn(
+                    label: Text('Status'),
+                  ),
+                  const DataColumn(
+                    label: Text('Action'),
+                  ),
+                ],
+                rows: List.generate(
+                  transactionDetails.length,
+                  (index) => transData(transactionDetails[index]),
                 ),
               ),
             ),
@@ -75,7 +75,8 @@ class TransTable extends StatelessWidget {
 }
 
 DataRow transData(TransactionData transactionInfo) {
-  const TextStyle greenColor = TextStyle(color: Colors.green);
+  const TextStyle greenColor =
+      TextStyle(color: Colors.green, fontWeight: FontWeight.bold);
   return DataRow(
     cells: [
       DataCell(

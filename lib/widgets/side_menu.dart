@@ -99,7 +99,7 @@ class SideMenu extends StatelessWidget {
                   icon: CupertinoIcons.info,
                   press: () {},
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 DrawerListTile(
                   title: 'Log Out',
                   color: Colors.black,

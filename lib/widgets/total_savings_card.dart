@@ -42,6 +42,9 @@ class TotalSavingsCard extends StatelessWidget {
                   width: 10,
                 ),
                 Chip(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
                   backgroundColor: Icons.arrow_upward == Icons.arrow_downward
                       ? Colors.red
                       : Colors.green.shade50,

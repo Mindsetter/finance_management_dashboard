@@ -1,5 +1,7 @@
+import 'package:finance_management_dashboard/controllers.dart/menu_controller.dart';
 import 'package:finance_management_dashboard/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -22,9 +24,15 @@ class Header extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if (!Responsive.isMobile(context)) const SizedBox(width: 20),
+          if (!Responsive.isMobile(context))
+            const SizedBox(
+              width: 20,
+            ),
           if (!Responsive.isDesktop(context))
-            IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: context.read<AppMenuController>().controlMenu,
+            ),
           const Expanded(
             flex: 2,
             child: Text(

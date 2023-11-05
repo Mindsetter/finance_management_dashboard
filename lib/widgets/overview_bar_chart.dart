@@ -16,8 +16,6 @@ class OverviewBarChartState extends State<OverviewBarChart> {
   late List<BarChartGroupData> rawBarGroups;
   late List<BarChartGroupData> showingBarGroups;
 
-  int touchedGroupIndex = -1;
-
   @override
   void initState() {
     super.initState();
